@@ -13,14 +13,15 @@ const { product } = Astro.props as Props;
 
 <a
   href={`/products/${product?.handle}`}
-  class="group flex justify-between overflow-hidden rounded-lg p-2 hover:bg-gray-50"
+  class="group flex flex-col overflow-hidden rounded-lg p-2 hover:bg-gray-50"
 >
-  <div class="relative">
-    <ShopifyImage
-      classList="h-full w-full border-r border-gray-100 group-hover:"
-      loading="eager"
-      image={product?.featuredImage}
-      sizes={`
+  <div class="flex justify-between">
+    <div class="relative">
+      <ShopifyImage
+        classList="h-full w-full border-r border-gray-100 group-hover:"
+        loading="eager"
+        image={product?.featuredImage}
+        sizes={`
       (min-width: 1540px) 348px,
       (min-width: 1280px) 284px,
       (min-width: 1040px) 309px,
@@ -28,26 +29,29 @@ const { product } = Astro.props as Props;
       (min-width: 640px) 284px,
       calc(100vw - 48px)
     `}
-    />
-  </div>
-  <div class="flex flex-col justify-between gap-3 px-5 py-6 text-zinc-700">
-    <h3 class="text-xl font-bold group-hover:underline">{product?.title}</h3>
-    <p class="font-bold">
-      <Money price={product?.variants.nodes[0].price} />
-    </p>
-    <div class="grid grid-cols-2 gap-2">
-      <div>
-        <p class="text-sm">Post Karma</p>
-        <p class="font-bold">2500</p>
+      />
+    </div>
+    <div class="flex flex-col justify-between gap-3 px-5 py-6 text-zinc-700">
+      <h3 class="text-xl font-bold group-hover:underline">{product?.title}</h3>
+      <div class="grid grid-cols-2 gap-2">
+        <div>
+          <p class="text-sm">Post Karma</p>
+          <p class="font-bold">2500</p>
+        </div>
+        <div>
+          <p class="text-sm">Age</p>
+          <p class="font-bold">2 months</p>
+        </div>
       </div>
       <div>
-        <p class="text-sm">Age</p>
-        <p class="font-bold">2 months</p>
+        <p class="text-sm">Comment Karma</p>
+        <p class="font-bold">1000</p>
       </div>
     </div>
-    <div>
-      <p class="text-sm">Comment Karma</p>
-      <p class="font-bold">1000</p>
-    </div>
   </div>
+  <button
+    class="flex items-center justify-center gap-2 rounded-md bg-[#FF5701] p-2 font-bold text-white"
+  >
+    +<Money price={product?.variants.nodes[0].price} />
+  </button>
 </a>
