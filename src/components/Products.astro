@@ -6,16 +6,55 @@ import ProductCard from "./ProductCard.astro";
 const ProductsResult = z.array(ProductResult);
 export interface Props {
   products: z.infer<typeof ProductsResult>;
+  productName: string;
 }
-const { products } = Astro.props as Props;
+const { products, productName } = Astro.props as Props;
 ---
 
 <section>
   <div class="container py-16 sm:py-20">
     <h2 class="sr-only">Products</h2>
 
-    <div class="grid gap-12 md:grid-cols-3 lg:grid-cols-5">
-      {products.map((product) => <ProductCard product={product} />)}
-    </div>
+    {
+      products.length > 0 ? (
+        <div class="grid gap-12 md:grid-cols-3 lg:grid-cols-5">
+          {products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      ) : (
+        <div class="flex flex-col items-center justify-center gap-4">
+          <p class="text-center text-3xl font-bold">Out of stock</p>
+          <p class="flex items-center gap-2 text-center text-xl">
+            <img
+              src="/images/telegram_icon.png"
+              alt="Telegram logo"
+              class="block size-8"
+            />
+            Stay tuned! We will add new stock soon!
+          </p>
+          <a
+            class="flex items-center gap-2 rounded-md bg-[#2EA6DE] px-4 py-2 text-white shadow-md transition-all hover:bg-blue-500 hover:shadow-xl"
+            href="https://t.me/ReddAcctsChannel"
+          >
+            Join Channel
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </a>
+        </div>
+      )
+    }
   </div>
 </section>
