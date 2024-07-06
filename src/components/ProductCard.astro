@@ -4,17 +4,16 @@ import type { ProductResult } from "../utils/schemas";
 
 import ShopifyImage from "./ShopifyImage.svelte";
 import Money from "./Money.svelte";
+import AddToCartForm from "../components/AddToCartForm.svelte";
 
 export interface Props {
   product: z.infer<typeof ProductResult>;
 }
 const { product } = Astro.props as Props;
+const firstVariant = product?.variants.nodes[0];
 ---
 
-<a
-  href={`/products/${product?.handle}`}
-  class="group flex flex-col overflow-hidden rounded-lg p-2 hover:bg-gray-50"
->
+<div class="group flex flex-col overflow-hidden rounded-lg p-2">
   <div class="flex justify-between">
     <div class="relative">
       <ShopifyImage
@@ -32,7 +31,7 @@ const { product } = Astro.props as Props;
       />
     </div>
     <div class="flex flex-col justify-between gap-3 px-5 py-6 text-zinc-700">
-      <h3 class="text-xl font-bold group-hover:underline">{product?.title}</h3>
+      <h3 class="text-xl font-bold">{product?.title}</h3>
       <div class="grid grid-cols-2 gap-2">
         <div>
           <p class="text-sm">Post Karma</p>
@@ -49,9 +48,11 @@ const { product } = Astro.props as Props;
       </div>
     </div>
   </div>
-  <button
-    class="flex items-center justify-center gap-2 rounded-md bg-[#FF5701] p-2 font-bold text-white"
-  >
-    +<Money price={product?.variants.nodes[0].price} />
-  </button>
-</a>
+  <AddToCartForm
+    client:load
+    price={product?.variants.nodes[0].price}
+    variantId={firstVariant?.id}
+    variantQuantityAvailable={firstVariant?.quantityAvailable}
+    variantAvailableForSale={firstVariant?.availableForSale}
+  />
+</div>

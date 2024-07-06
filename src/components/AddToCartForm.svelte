@@ -1,9 +1,14 @@
 <script lang="ts">
   import { addCartItem, isCartUpdating, cart } from "../stores/cart";
+  import Money from "../components/Money.svelte"; 
 
   export let variantId: string;
   export let variantQuantityAvailable: number;
   export let variantAvailableForSale: boolean;
+  export let price: {
+    amount: string;
+    currencyCode: string;
+} | undefined;
 
   // Check if the variant is already in the cart and if there are any units left
   $: variantInCart =
@@ -30,7 +35,7 @@
 
   <button
     type="submit"
-    class="button mt-10 w-full"
+    class="flex items-center w-full justify-center gap-2 rounded-md bg-[#FF5701] p-2 font-bold text-white hover:bg-white hover:text-[#FF5701] transition-colors border border-[#FF5701]"
     disabled={$isCartUpdating || noQuantityLeft || !variantAvailableForSale}
   >
     {#if $isCartUpdating}
@@ -56,7 +61,12 @@
       </svg>
     {/if}
     {#if variantAvailableForSale}
-      Add to bag
+      +
+      {#if price} 
+        <Money price={price} />
+      {:else}
+        Sold out
+      {/if}
     {:else}
       Sold out
     {/if}
