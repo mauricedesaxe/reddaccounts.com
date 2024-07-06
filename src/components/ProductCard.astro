@@ -13,11 +13,11 @@ const { product } = Astro.props as Props;
 
 <a
   href={`/products/${product?.handle}`}
-  class="group overflow-hidden rounded-lg border-l-orange-100 shadow hover:shadow-md"
+  class="group flex justify-between overflow-hidden rounded-lg p-2 hover:bg-gray-50"
 >
   <div class="relative">
     <ShopifyImage
-      classList=""
+      classList="h-full w-full border-r border-gray-100 group-hover:"
       loading="eager"
       image={product?.featuredImage}
       sizes={`
@@ -29,35 +29,25 @@ const { product } = Astro.props as Props;
       calc(100vw - 48px)
     `}
     />
-    <div
-      class="absolute inset-0 z-10 grid items-end justify-items-center opacity-0 transition-all group-hover:bg-black/10 group-hover:opacity-100"
-    >
-      <button
-        class="flex w-full gap-3 rounded-none bg-[#FF5701] px-4 py-2 text-white"
-      >
-        <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
-          </svg>
-        </span>
-        Buy now
-      </button>
-    </div>
   </div>
-  <div class="flex flex-col justify-between px-5 py-6 text-zinc-700">
-    <h3 class="group-hover:underline">{product?.title}</h3>
+  <div class="flex flex-col justify-between gap-3 px-5 py-6 text-zinc-700">
+    <h3 class="text-xl font-bold group-hover:underline">{product?.title}</h3>
     <p class="font-bold">
       <Money price={product?.variants.nodes[0].price} />
     </p>
+    <div class="grid grid-cols-2 gap-2">
+      <div>
+        <p class="text-sm">Post Karma</p>
+        <p class="font-bold">2500</p>
+      </div>
+      <div>
+        <p class="text-sm">Age</p>
+        <p class="font-bold">2 months</p>
+      </div>
+    </div>
+    <div>
+      <p class="text-sm">Comment Karma</p>
+      <p class="font-bold">1000</p>
+    </div>
   </div>
 </a>
