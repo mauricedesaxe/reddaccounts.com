@@ -4,12 +4,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Products from "../components/Products.astro";
 import { setCache } from "../utils/cache";
 
-const title = "High Karma Accounts";
+const title = "Blank Accounts";
 const headers = Astro.request.headers;
 const ip = headers.get("x-vercel-forwarded-for") || Astro.clientAddress;
 const products = await getProducts({
   buyerIP: ip,
-  collectionId: "gid://shopify/Collection/626638160195",
+  collectionId: "gid://shopify/Collection/626638750019",
 });
 
 setCache.short(Astro);
