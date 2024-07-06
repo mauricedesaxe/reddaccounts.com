@@ -8,7 +8,19 @@ setCache.short(Astro);
 ---
 
 <BaseLayout title={title}>
-  <div class="flex flex-col items-center justify-center gap-6 py-16">
+  <div
+    class="relative flex flex-col items-center justify-center gap-6 py-16 md:py-32"
+  >
+    <img
+      src="/images/cute_gyal_bby.png"
+      alt="Cute Gyal Baby avatar"
+      class="absolute -left-4 top-0 w-12 rotate-45 md:-left-8 md:top-4 md:w-32"
+    />
+    <img
+      src="/images/little_sweetiepie.png"
+      alt="Little Sweetie Pie avatar"
+      class="absolute -right-8 bottom-0 hidden w-28 -rotate-45 scale-x-[-1] lg:block"
+    />
     <h1 class="text-4xl font-bold">
       Welcome to <span class="font-bold"
         ><span class="mr-1 rounded-md bg-red-500 px-2 py-1 pr-1 text-white">
