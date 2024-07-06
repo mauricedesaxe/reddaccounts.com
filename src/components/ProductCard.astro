@@ -11,6 +11,16 @@ export interface Props {
 }
 const { product } = Astro.props as Props;
 const firstVariant = product?.variants.nodes[0];
+
+const postKarma =
+  product?.metafields?.find((metafield) => metafield?.key === "post_karma")
+    ?.value || "N/A";
+const age =
+  product?.metafields?.find((metafield) => metafield?.key === "age")?.value ||
+  "N/A";
+const commentKarma =
+  product?.metafields?.find((metafield) => metafield?.key === "comment_karma")
+    ?.value || "N/A";
 ---
 
 <div class="group flex flex-col overflow-hidden rounded-lg p-2">
@@ -35,16 +45,16 @@ const firstVariant = product?.variants.nodes[0];
       <div class="grid grid-cols-2 gap-2">
         <div>
           <p class="text-sm">Post Karma</p>
-          <p class="font-bold">2500</p>
+          <p class="font-bold">{postKarma}</p>
         </div>
         <div>
           <p class="text-sm">Age</p>
-          <p class="font-bold">2 months</p>
+          <p class="font-bold">{age}</p>
         </div>
       </div>
       <div>
         <p class="text-sm">Comment Karma</p>
-        <p class="font-bold">1000</p>
+        <p class="font-bold">{commentKarma}</p>
       </div>
     </div>
   </div>

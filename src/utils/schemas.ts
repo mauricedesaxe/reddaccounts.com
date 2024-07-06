@@ -74,5 +74,14 @@ export const ProductResult = z
       nodes: z.array(VariantResult),
     }),
     featuredImage: ImageResult.nullable(),
+    metafields: z.array(
+      z
+        .object({
+          namespace: z.string(),
+          key: z.string(),
+          value: z.string(),
+        })
+        .nullable(),
+    ),
   })
   .nullable();

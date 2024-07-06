@@ -79,6 +79,15 @@ fragment productFragment on Product {
     height
     altText
   }
+  metafields(identifiers: [
+      {namespace: "custom", key: "comment_karma"},
+      {namespace: "custom", key: "post_karma"},
+      {namespace: "custom", key: "age"}
+    ]) {
+    namespace 
+    key
+    value
+  }
 }
 `;
 
