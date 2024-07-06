@@ -1,24 +1,72 @@
 ---
 import Logo from "./Logo.astro";
 import CartIcon from "./CartIcon.svelte";
+
+const navLinks = [
+  {
+    label: "High Karma Accounts",
+    href: "/high-karma-accounts",
+  },
+  {
+    label: "Blank Accounts",
+    href: "/blank-accounts",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];
 ---
 
-<header class="sticky top-0 z-40">
-  <div class="border-b bg-white/70 py-3 backdrop-blur-2xl">
-    <nav class="container flex items-center justify-between">
-      <a href="/">
-        <span class="sr-only">Logo</span>
-        <Logo />
-      </a>
-      <h1 class="sr-only">High Karma Accounts</h1>
-      <div class="flex items-center gap-8">
-        <a href="/high-karma-accounts">High Karma Accounts</a>
-        <a href="/blank-accounts">Blank Accounts</a>
-        <a href="/contact">Contact</a>
+<div
+  class="flex w-full flex-col items-center justify-between bg-gray-50 px-4 py-2 sm:flex-row md:hidden"
+>
+  <div class="container mx-auto">
+    <button
+      id="open-nav"
+      class="block w-full rounded-md px-4 py-2 text-center text-black transition-colors hover:bg-gray-200"
+      >Open navigation</button
+    >
+  </div>
+</div>
+
+<header
+  id="nav"
+  class="absolute top-14 z-10 w-full -translate-y-[200%] flex-col items-center justify-between bg-white px-4 py-2 text-black transition-transform duration-300 sm:flex-row md:static md:flex md:translate-y-0"
+>
+  <div class="container mx-auto space-y-4 p-2">
+    <nav
+      class="flex flex-col justify-around gap-2 overflow-x-auto text-sm sm:flex-row sm:gap-6"
+    >
+      <div class="flex flex-1 flex-col gap-2 sm:flex-row sm:gap-6">
+        <a class="flex items-center justify-center py-2 md:py-0" href="/">
+          <Logo />
+        </a>
+        {
+          navLinks.map((link) => (
+            <a
+              class="block rounded-md px-4 py-2 text-center transition-colors hover:bg-gray-200"
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          ))
+        }
       </div>
-      <div class="justify-self-end">
+      <div class="flex items-center justify-center">
         <CartIcon client:load />
       </div>
     </nav>
   </div>
 </header>
+
+<script lang="js" is:inline>
+  const openNavBtn = document.getElementById("open-nav");
+  const nav = document.getElementById("nav");
+  openNavBtn.addEventListener("click", () => {
+    nav.classList.toggle("-translate-y-[200%]");
+    openNavBtn.textContent = nav.classList.contains("-translate-y-[200%]")
+      ? "Open navigation"
+      : "Close navigation";
+  });
+</script>
