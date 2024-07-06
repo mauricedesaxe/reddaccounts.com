@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { setCache } from "../utils/cache";
+
+const title = "Contact";
+
+setCache.short(Astro);
+---
+
+<BaseLayout title={title}>
+  <div
+    class="relative flex flex-col items-center justify-center gap-6 overflow-hidden py-16 text-center md:py-32"
+  >
+    <h1 class="text-4xl font-bold">{title}</h1>
+    <p class="text-xl">
+      If you have any questions or feedback, <br /> please contact us at
+      <a class="text-red-500" href="https://t.me/ReddAcctsSupport"
+        >@ReddAcctsSupport</a
+      >
+    </p>
+  </div>
+  <div
+    class="relative flex flex-col items-center justify-center gap-6 overflow-hidden py-16 text-center md:py-32"
+  >
+    <h1 class="flex items-center gap-2 text-4xl font-bold">
+      <img
+        src="/images/telegram_icon.png"
+        alt="Telegram logo"
+        class="block size-8"
+      />Our Telegram Channel
+    </h1>
+    <p class="text-xl">
+      Join our Telegram channel to stay informed about new account drops!
+    </p>
+    <a
+      class="flex items-center gap-2 rounded-md bg-[#2EA6DE] px-4 py-2 text-white shadow-md transition-all hover:bg-blue-500 hover:shadow-xl"
+      href="https://t.me/ReddAcctsChannel">Join Channel</a
+    >
+  </div>
+</BaseLayout>
