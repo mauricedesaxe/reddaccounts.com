@@ -1,8 +1,41 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { setCache } from "../utils/cache";
+import CheckMark from "../components/CheckMark.astro";
 
 const title = "High Karma Accounts";
+
+const cards = [
+  {
+    title: "High Karma",
+    description:
+      "All accounts have the required karma to post in any subreddit",
+  },
+  {
+    title: "Female Usernames",
+    description:
+      "Every account has a generic female username so it can be used by any model",
+  },
+  {
+    title: "Aged",
+    description:
+      "You can post freely in any subreddit using our accounts due to their required age",
+  },
+  {
+    title: "Email Included",
+    description:
+      "Each account includes the original email it was created and verified with",
+  },
+  {
+    title: "Email Verified",
+    description: "All Reddit accounts we provide are email-verified",
+  },
+  {
+    title: "US-IP Address",
+    description:
+      "We created and farmed our Reddit accounts on IP addresses based in the US",
+  },
+];
 
 setCache.short(Astro);
 ---
@@ -49,5 +82,23 @@ setCache.short(Astro);
           d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
       </svg>
     </a>
+  </div>
+  <div
+    class="my-12 grid grid-cols-1 gap-6 bg-gray-50 px-4 py-16 text-white md:grid-cols-3"
+  >
+    {
+      cards.map((card) => (
+        <div class="my-2 rounded-md bg-white p-6 text-black shadow-md">
+          <h2 class="flex items-center gap-2 text-2xl font-bold">
+            <span class="text-red-500">
+              <CheckMark />
+            </span>
+            {card.title}
+          </h2>
+          <hr class="my-4" />
+          <p class="text-xl">{card.description}</p>
+        </div>
+      ))
+    }
   </div>
 </BaseLayout>
