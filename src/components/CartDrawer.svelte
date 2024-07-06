@@ -225,7 +225,7 @@
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div class="mt-6">
-                      <a href={$cart.checkoutUrl} class="button">Checkout</a>
+                      <a href={$cart.checkoutUrl} class="bg-[#FF5701] text-white p-2 rounded-md hover:bg-white hover:text-[#FF5701] transition-colors border border-[#FF5701]">Checkout</a>
                     </div>
                   </div>
                 {/if}
