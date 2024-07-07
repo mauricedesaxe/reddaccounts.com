@@ -30,9 +30,9 @@ setCache.short(Astro);
     <NotFoundLayout title="Product not found" message="Product not found" />
   ) : (
     <BaseLayout title={product.title}>
-      <div class="container pt-6">
+      {/* <div class="container pt-6">
         <ProductBreadcrumb title={product.title} />
-      </div>
+      </div> */}
 
       <section class="container">
         <div class="pb-16 pt-6 lg:grid lg:grid-cols-12 lg:gap-20">
@@ -46,7 +46,7 @@ setCache.short(Astro);
               price={firstVariant?.price}
             />
 
-            <div>
+            <div class="mt-8">
               <AddToCartForm
                 client:load
                 variantId={firstVariant?.id}
@@ -55,20 +55,20 @@ setCache.short(Astro);
               />
             </div>
 
-            <div class="mt-8">
+            {/* <div class="mt-8">
               <ProductAccordions />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
-      <section class="container">
+      {/* <section class="container">
         <ProductReviews />
       </section>
 
       <section class="container">
         <ProductRecommendations productId={product.id} buyerIP={ip} />
-      </section>
+      </section> */}
     </BaseLayout>
   )
 }
