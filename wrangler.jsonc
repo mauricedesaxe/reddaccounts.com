@@ -1,0 +1,7 @@
+{
+  "name": "reddaccounts",
+  "compatibility_date": "2024-09-06",
+  "assets": {
+    "directory": "./dist",
+  },
+}
