@@ -12,22 +12,22 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/node": "^8.3.2",
-    "@astrojs/svelte": "^5.6.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "@nanostores/persistent": "^0.10.1",
-    "@shopify/hydrogen-react": "^2024.4.4",
+    "@astrojs/node": "^9.4.3",
+    "@astrojs/svelte": "^7.1.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@nanostores/persistent": "^1.1.0",
+    "@shopify/hydrogen-react": "^2025.5.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "astro": "^4.11.3",
-    "nanostores": "^0.10.3",
-    "svelte": "^4.2.18",
-    "zod": "^3.23.8"
+    "astro": "^5.13.5",
+    "nanostores": "^1.0.1",
+    "svelte": "^5.38.7",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
-    "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.2"
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
   }
 }
