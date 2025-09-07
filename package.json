@@ -20,6 +20,7 @@
     "@shopify/hydrogen-react": "^2025.5.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "astro": "^5.13.5",
+    "cloudflare": "^5.0.0",
     "nanostores": "^1.0.1",
     "svelte": "^5.38.7",
     "zod": "^4.1.5"
