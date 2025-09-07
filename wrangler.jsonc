@@ -2,6 +2,16 @@
   "name": "reddaccounts",
   "compatibility_date": "2024-09-06",
   "assets": {
-    "directory": "./dist",
+    "directory": "./dist"
   },
+  "vars": {
+    "PUBLIC_SHOPIFY_SHOP": "4bb81c-85.myshopify.com",
+    "PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN": "5de34ce44ba873ced4a2753a00070532"
+  },
+  "site": {
+    "bucket": "./dist"
+  },
+  "routes": [
+    { "pattern": "*", "script": "index.js" }
+  ]
 }
