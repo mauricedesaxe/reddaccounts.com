@@ -1,6 +1,7 @@
 ---
 import { getProductByHandle } from "./../../utils/shopify";
 import { setCache } from "../../utils/cache";
+import { updateConfigWithRuntimeEnv } from "../../utils/config";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
@@ -11,6 +12,11 @@ import ProductInformations from "../../components/ProductInformations.astro";
 import ProductRecommendations from "../../components/ProductRecommendations.astro";
 import ProductReviews from "../../components/ProductReviews.astro";
 import ProductAccordions from "../../components/ProductAccordions.astro";
+
+// Get runtime env from Cloudflare
+if (Astro.request.cf) {
+  updateConfigWithRuntimeEnv(Astro.locals.runtime.env);
+}
 
 const { handle } = Astro.params;
 const headers = Astro.request.headers;

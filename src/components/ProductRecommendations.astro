@@ -1,5 +1,6 @@
 ---
 import { getProductRecommendations } from "../utils/shopify";
+import { updateConfigWithRuntimeEnv } from "../utils/config";
 import ProductCard from "./ProductCard.astro";
 export interface Props {
   productId: string;
@@ -7,6 +8,11 @@ export interface Props {
 }
 
 const { productId, buyerIP } = Astro.props as Props;
+
+// Get runtime env from Cloudflare if this component is rendered directly
+if (Astro.request.cf) {
+  updateConfigWithRuntimeEnv(Astro.locals.runtime.env);
+}
 
 const productRecommendations = await getProductRecommendations({
   productId,

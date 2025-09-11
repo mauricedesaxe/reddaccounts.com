@@ -3,6 +3,12 @@ import { getProducts } from "../utils/shopify";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Products from "../components/Products.astro";
 import { setCache } from "../utils/cache";
+import { updateConfigWithRuntimeEnv } from "../utils/config";
+
+// Get runtime env from Cloudflare
+if (Astro.request.cf) {
+  updateConfigWithRuntimeEnv(Astro.locals.runtime.env);
+}
 
 const title = "Blank Accounts";
 const headers = Astro.request.headers;
