@@ -17,7 +17,9 @@ const makeShopifyRequest = async (
   variables: Record<string, unknown> = {},
   buyerIP: string = "",
 ) => {
+  console.log("makeShopifyRequest() called")
   const isSSR = import.meta.env.SSR;
+  console.log("isSSR", isSSR)
   const apiUrl = `https://${config.shopifyShop}/api/${config.apiVersion}/graphql.json`;
 
   function getOptions() {
@@ -51,16 +53,20 @@ const makeShopifyRequest = async (
     return options;
   }
 
-  const response = await fetch(apiUrl, getOptions());
+  console.log("calling fetch()")
+  const options = getOptions()
+  console.log("using options.headers:", JSON.stringify(options.headers))
+  const response = await fetch(apiUrl, options);
+  console.log("fetch() called")
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`${response.status} ${body}`);
+    throw new Error(`!response.ok: ${response.status} ${body}`);
   }
 
   const json = await response.json();
   if (json.errors) {
-    throw new Error(json.errors.map((e: Error) => e.message).join("\n"));
+    throw new Error("json.errors: "+json.errors.map((e: Error) => e.message).join("\n"));
   }
 
   return json.data;
