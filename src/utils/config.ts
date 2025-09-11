@@ -7,7 +7,9 @@ const defineConfig = {
   privateShopifyAccessToken: import.meta.env
     .PRIVATE_SHOPIFY_STOREFRONT_ACCESS_TOKEN
     ? import.meta.env.PRIVATE_SHOPIFY_STOREFRONT_ACCESS_TOKEN
-    : "",
+    : process.env.PRIVATE_SHOPIFY_STOREFRONT_ACCESS_TOKEN
+    ? process.env.PRIVATE_SHOPIFY_STOREFRONT_ACCESS_TOKEN
+    : "nothing",
   apiVersion: "2023-01",
 };
 
