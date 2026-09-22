@@ -3,7 +3,7 @@ import { z } from "zod";
 import { ProductResult } from "../utils/schemas";
 import ProductCard from "./ProductCard.astro";
 
-const ProductsResult = z.array(ProductResult);
+const ProductsResult = z.array(ProductResult.unwrap());
 export interface Props {
   products: z.infer<typeof ProductsResult>;
   productName: string;
