@@ -7,7 +7,7 @@ import Money from "./Money.svelte";
 import AddToCartForm from "../components/AddToCartForm.svelte";
 
 export interface Props {
-  product: z.infer<typeof ProductResult>;
+  product: z.infer<ReturnType<typeof ProductResult.unwrap>>;
 }
 const { product } = Astro.props as Props;
 const firstVariant = product?.variants.nodes[0];
@@ -24,7 +24,7 @@ const commentKarma =
 ---
 
 <div class="group flex flex-col overflow-hidden rounded-lg p-2">
-  <div class="flex justify-between">
+  <a class="flex justify-between" href={`/products/${product.handle}`}>
     <div class="relative">
       <ShopifyImage
         classList="h-full w-full border-r border-gray-100 h-48 md:h-52 w-full"
@@ -57,7 +57,7 @@ const commentKarma =
         <p class="font-bold">{commentKarma}</p>
       </div>
     </div>
-  </div>
+  </a>
   <AddToCartForm
     client:load
     price={product?.variants.nodes[0].price}

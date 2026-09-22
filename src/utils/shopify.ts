@@ -93,7 +93,7 @@ export const getProducts = async (options: {
   }
 
   const productsList = collection.products.edges.map((edge: any) => edge.node);
-  const ProductsResult = z.array(ProductResult);
+  const ProductsResult = z.array(ProductResult.unwrap());
   const parsedProducts = ProductsResult.parse(productsList);
 
   return parsedProducts;
@@ -132,7 +132,7 @@ export const getProductRecommendations = async (options: {
   );
   const { productRecommendations } = data;
 
-  const ProductsResult = z.array(ProductResult);
+  const ProductsResult = z.array(ProductResult.unwrap());
   const parsedProducts = ProductsResult.parse(productRecommendations);
 
   return parsedProducts;
